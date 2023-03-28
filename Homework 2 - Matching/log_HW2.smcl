@@ -1,0 +1,3256 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}D:\Dropbox\work files\23春课程\高级计量经济学2\Homework 2 - Matching\log_HW2.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}19 Mar 2023, 11:15:31
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. eststo clear
+{err}command {bf}eststo{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+end of do-file
+
+{search r(199), local:r(199);}
+
+{com}. help eststo
+
+. help esttab
+
+. help esitimates
+
+. estadd
+{err}command {bf}estadd{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. eststo
+{err}command {bf}eststo{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. estimates
+
+. estimates store
+{err}last estimation results not found, nothing to store
+{txt}{search r(301), local:r(301);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. eststo clear
+{err}command {bf}eststo{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+end of do-file
+
+{search r(199), local:r(199);}
+
+{com}. help esitimates add
+
+. help estimates
+
+. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates store clear
+{err}last estimation results not found, nothing to store
+{txt}{search r(301), local:r(301);}
+
+end of do-file
+
+{search r(301), local:r(301);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.         reg `i' wgrp1 wgrp2 [aw=npup]
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if wgrp == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+{err}npup not found
+{txt}{search r(111), local:r(111);}
+
+end of do-file
+
+{search r(111), local:r(111);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.         forvalues j = 0/1{c -(}
+{txt}  3{com}.                 qui sum `i' if wgrp == `j'
+{txt}  4{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  5{com}.         {c )-}
+{txt}  6{com}.         est store `i'
+{txt}  7{com}. {c )-}
+{err}wgrp not found
+{txt}{search r(111), local:r(111);}
+
+end of do-file
+
+{search r(111), local:r(111);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.         forvalues j = 0/1{c -(}
+{txt}  3{com}.                 qui sum `i' if treat == `j'
+{txt}  4{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  5{com}.         {c )-}
+{txt}  6{com}.         est store `i'
+{txt}  7{com}. {c )-}
+{err}command {bf}estadd{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+end of do-file
+
+{search r(199), local:r(199);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.         forvalues j = 0/1{c -(}
+{txt}  3{com}.                 qui sum `i' if treat == `j'
+{txt}  4{com}.                 estimates store scalar mean_`j' = r(mean)
+{txt}  5{com}.         {c )-}
+{txt}  6{com}.         est store `i'
+{txt}  7{com}. {c )-}
+{err}last estimation results not found, nothing to store
+{txt}{search r(301), local:r(301);}
+
+end of do-file
+
+{search r(301), local:r(301);}
+
+{com}. help estimates
+
+. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estimates store scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{err}=exp not allowed
+{txt}{search r(101), local:r(101);}
+
+end of do-file
+
+{search r(101), local:r(101);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' i.treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estimates store scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}1.treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{err}=exp not allowed
+{txt}{search r(101), local:r(101);}
+
+end of do-file
+
+{search r(101), local:r(101);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estimates store scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{err}=exp not allowed
+{txt}{search r(101), local:r(101);}
+
+end of do-file
+
+{search r(101), local:r(101);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}. 
+.         est store `i'
+{txt}  4{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}. 
+.         {c )-}
+{txt}  6{com}.         est store `i'
+{txt}  7{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. ssc install estout, replace
+{txt}checking {hilite:estout} consistency and verifying not already installed...
+installing into C:\Users\zwy99\ado\plus\...
+installation complete.
+
+{com}. ado
+
+{res}{s6hlp}
+[1] package ^estout^ from http://fmwww.bc.edu/repec/bocode/e
+      ^'ESTOUT': module to make regression tables^
+{smcl}
+{res}
+{com}. do "D:\Dropbox\work files\23春课程\高级计量经济学2\Homework 2 - Matching\Descriptive Statistics.do"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd store scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{err}command {bf}estadd_store{sf} is unrecognized
+invalid subcommand
+{txt}{search r(199), local:r(199);}
+
+end of do-file
+
+{search r(199), local:r(199);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. esttab
+{res}
+{txt}{hline 28}
+{txt}                      (1)   
+{txt}                education   
+{txt}{hline 28}
+{txt}treat       {res}        0.192   {txt}
+            {res} {ralign 12:{txt:(}1.49{txt:)}}   {txt}
+
+{txt}_cons       {res}        10.19***{txt}
+            {res} {ralign 12:{txt:(}123.31{txt:)}}   {txt}
+{txt}{hline 28}
+{txt}N           {res}          722   {txt}
+{txt}{hline 28}
+{txt}t statistics in parentheses
+{txt}* p<0.05, ** p<0.01, *** p<0.001
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+{txt}
+{com}. 
+. esttab age education, b(%9.1f) se(%9.1f) label
+{res}
+{txt}{hline 52}
+{txt}                              (1)             (2)   
+{txt}                              age       education   
+{txt}{hline 52}
+{txt}treat               {res}          0.2             0.2   {txt}
+                    {res} {ralign 12:{txt:(}0.5{txt:)}}    {ralign 12:{txt:(}0.1{txt:)}}   {txt}
+
+{txt}Constant            {res}         24.4***         10.2***{txt}
+                    {res} {ralign 12:{txt:(}0.3{txt:)}}    {ralign 12:{txt:(}0.1{txt:)}}   {txt}
+{txt}{hline 52}
+{txt}Observations        {res}          722             722   {txt}
+{txt}{hline 52}
+{txt}Standard errors in parentheses
+{txt}* p<0.05, ** p<0.01, *** p<0.001
+
+{com}. ///
+> s(mean_1 mean_2, labels("Group 1 (25 schools)"
+{err}command {bf}s{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+end of do-file
+
+{search r(199), local:r(199);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+{txt}
+{com}. 
+. esttab age education, b(%9.1f) se(%9.1f) label///
+{err}option {bf:/} not allowed
+{txt}{search r(198), local:r(198);}
+
+end of do-file
+
+{search r(198), local:r(198);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+{txt}
+{com}. 
+. esttab age education, b(%9.1f) se(%9.1f) label s(mean_1 mean_2, labels("Group 1 (25 schools)" "Group 2 (25 schools)")///
+{err}) required
+{txt}{search r(100), local:r(100);}
+
+end of do-file
+
+{search r(100), local:r(100);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+{txt}
+{com}. 
+. esttab age education, b(%9.1f) se(%9.1f) label ///
+> s(mean_1 mean_2, labels("Group 1 (25 schools)" "Group 2 (25 schools)")///
+{err}) required
+{txt}{search r(100), local:r(100);}
+
+end of do-file
+
+{search r(100), local:r(100);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+{txt}
+{com}. 
+. esttab age education, b(%9.1f) se(%9.1f) label ///
+> s(mean_1 mean_2, labels("Group 1 (25 schools)" "Group 2 (25 schools)") ///
+> fmt(%9.2f)) ///
+> starlevels(* 0.1 ** 0.05 *** 0.01) ///
+> drop(_cons)
+{res}
+{txt}{hline 52}
+{txt}                              (1)             (2)   
+{txt}                              age       education   
+{txt}{hline 52}
+{txt}treat               {res}          0.2             0.2   {txt}
+                    {res} {ralign 12:{txt:(}0.5{txt:)}}    {ralign 12:{txt:(}0.1{txt:)}}   {txt}
+{txt}{hline 52}
+{txt}Group 1 (25 schools){res}        24.63           10.38   {txt}
+{txt}Group 2 (25 schools){res}                                {txt}
+{txt}{hline 52}
+{txt}Standard errors in parentheses
+{txt}* p<0.1, ** p<0.05, *** p<0.01
+
+{com}. 
+{txt}end of do-file
+
+{com}. help r
+
+. help ummarize
+
+. help summarize
+
+. r(mean)
+{err}command {bf}r{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. regress age treat
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. r(mean)
+{err}command {bf}r{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. e(r2)
+{err}r2 not found
+{txt}{search r(111), local:r(111);}
+
+{com}. help sum
+
+. sum age
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 9}age {c |}{res}        722    24.52078    6.625947         17         55
+
+{com}. r(mean)
+{err}command {bf}r{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. display r(mean)
+{res}24.520776
+
+{com}. display e(r2)
+{res}.00017737
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+{txt}
+{com}. 
+. esttab age education, b(%9.1f) se(%9.1f) label ///
+> s(mean_1 mean_2, labels("Group 1 (25 schools)" "Group 2 (25 schools)") ///
+> fmt(%9.2f)) ///
+> starlevels(* 0.1 ** 0.05 *** 0.01) ///
+> drop(_cons)
+{res}
+{txt}{hline 52}
+{txt}                              (1)             (2)   
+{txt}                              age       education   
+{txt}{hline 52}
+{txt}treat               {res}          0.2             0.2   {txt}
+                    {res} {ralign 12:{txt:(}0.5{txt:)}}    {ralign 12:{txt:(}0.1{txt:)}}   {txt}
+{txt}{hline 52}
+{txt}Group 1 (25 schools){res}        24.63           10.38   {txt}
+{txt}Group 2 (25 schools){res}                                {txt}
+{txt}{hline 52}
+{txt}Standard errors in parentheses
+{txt}* p<0.1, ** p<0.05, *** p<0.01
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+{txt}
+{com}. 
+. esttab age education, b(%9.1f) se(%9.1f) label ///
+> s(mean_0 mean_1, labels("Group 1 (25 schools)" "Group 2 (25 schools)") ///
+> fmt(%9.2f)) ///
+> starlevels(* 0.1 ** 0.05 *** 0.01) ///
+> drop(_cons)
+{res}
+{txt}{hline 52}
+{txt}                              (1)             (2)   
+{txt}                              age       education   
+{txt}{hline 52}
+{txt}treat               {res}          0.2             0.2   {txt}
+                    {res} {ralign 12:{txt:(}0.5{txt:)}}    {ralign 12:{txt:(}0.1{txt:)}}   {txt}
+{txt}{hline 52}
+{txt}Group 1 (25 schools){res}        24.45           10.19   {txt}
+{txt}Group 2 (25 schools){res}        24.63           10.38   {txt}
+{txt}{hline 52}
+{txt}Standard errors in parentheses
+{txt}* p<0.1, ** p<0.05, *** p<0.01
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+{txt}
+{com}. 
+. esttab age education, b(%9.1f) se(%9.1f) label ///
+> s(mean_0 mean_1, labels("Group 1 (25 schools)" "Group 2 (25 schools)") ///
+> fmt(%9.2f)) ///
+> starlevels(* 0.1 ** 0.05 *** 0.01) ///
+
+{txt}end of do-file
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+{txt}
+{com}. 
+. esttab age education, b(%9.1f) se(%9.1f) label ///
+> s(mean_0 mean_1, labels("Group 1 (25 schools)" "Group 2 (25 schools)") ///
+> fmt(%9.2f)) ///
+> starlevels(* 0.1 ** 0.05 *** 0.01) ///
+
+{txt}end of do-file
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+{txt}
+{com}. 
+. esttab age education, b(%9.1f) se(%9.1f) label ///
+> s(mean_0 mean_1, labels("Group 1 (25 schools)" "Group 2 (25 schools)") ///
+> fmt(%9.2f)) ///
+> starlevels(* 0.1 ** 0.05 *** 0.01) ///
+> drop(_cons)
+{res}
+{txt}{hline 52}
+{txt}                              (1)             (2)   
+{txt}                              age       education   
+{txt}{hline 52}
+{txt}treat               {res}          0.2             0.2   {txt}
+                    {res} {ralign 12:{txt:(}0.5{txt:)}}    {ralign 12:{txt:(}0.1{txt:)}}   {txt}
+{txt}{hline 52}
+{txt}Group 1 (25 schools){res}        24.45           10.19   {txt}
+{txt}Group 2 (25 schools){res}        24.63           10.38   {txt}
+{txt}{hline 52}
+{txt}Standard errors in parentheses
+{txt}* p<0.1, ** p<0.05, *** p<0.01
+
+{com}. 
+{txt}end of do-file
+
+{com}. use nsw.dta, clear
+
+. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+{txt}
+{com}. 
+. esttab age education, b(%9.1f) se(%9.1f) label ///
+> s(mean_0 mean_1, labels("Group 1 (25 schools)" "Group 2 (25 schools)") ///
+> fmt(%9.2f)) ///
+> starlevels(* 0.1 ** 0.05 *** 0.01) ///
+
+{txt}end of do-file
+
+{com}. drop(_cons)
+{err}variable {bf}_cons{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+{txt}
+{com}. 
+. esttab age education, b(%9.1f) se(%9.1f) label ///
+> s(mean_0 mean_1, labels("Group 1 (25 schools)" "Group 2 (25 schools)") ///
+> fmt(%9.2f)) ///
+> starlevels(* 0.1 ** 0.05 *** 0.01) ///
+> display _cons
+{err}option {bf:display} not allowed
+{txt}{search r(198), local:r(198);}
+
+end of do-file
+
+{search r(198), local:r(198);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. foreach i of varlist age education {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+{txt}
+{com}. 
+. esttab age education, b(%9.1f) se(%9.1f) label ///
+> s(mean_0 mean_1, labels("Group 1 (25 schools)" "Group 2 (25 schools)") ///
+> fmt(%9.2f)) ///
+> starlevels(* 0.1 ** 0.05 *** 0.01) ///
+> display `_cons'
+{err}option {bf:display} not allowed
+{txt}{search r(198), local:r(198);}
+
+end of do-file
+
+{search r(198), local:r(198);}
+
+{com}. use nsw.dta, clear
+
+. regress age treat
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. est store age
+
+. help estimates store
+
+. regress age black if treat ==1
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       297
+{txt}{hline 13}{c +}{hline 34}   F(1, 295)       = {res}     1.38
+{txt}       Model {c |} {res} 61.5605154         1  61.5605154   {txt}Prob > F        ={res}    0.2413
+{txt}    Residual {c |} {res} 13171.9546       295  44.6506937   {txt}R-squared       ={res}    0.0047
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0013
+{txt}       Total {c |} {res} 13233.5152       296  44.7078215   {txt}Root MSE        =   {res} 6.6821
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}black {c |}{col 14}{res}{space 2} 1.141077{col 26}{space 2} .9718021{col 37}{space 1}    1.17{col 46}{space 3}0.241{col 54}{space 4}-.7714669{col 67}{space 3}  3.05362
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 23.71186{col 26}{space 2} .8699376{col 37}{space 1}   27.26{col 46}{space 3}0.000{col 54}{space 4} 21.99979{col 67}{space 3} 25.42393
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. eststo m2
+
+. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. foreach i of local vars {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}. 
+{err}unexpected end of file
+{txt}{search r(612), local:r(612);}
+
+end of do-file
+
+{search r(612), local:r(612);}
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. 
+. local vars age education black hispanic married nodegree re75
+{txt}
+{com}. 
+. foreach i of local `vars' {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+{err}{c -(} required
+{txt}{search r(100), local:r(100);}
+
+end of do-file
+
+{search r(100), local:r(100);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{txt}
+{com}. 
+. local vars age education black hispanic married nodegree re75
+{txt}
+{com}. 
+. foreach i of varlist `vars' {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.00
+{txt}       Model {c |} {res} .000317114         1  .000317114   {txt}Prob > F        ={res}    0.9645
+{txt}    Residual {c |} {res} 115.279461       720  .160110363   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0014
+{txt}       Total {c |} {res} 115.279778       721  .159888736   {txt}Root MSE        =   {res} .40014
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       black{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .0013468{col 26}{space 2} .0302626{col 37}{space 1}    0.04{col 46}{space 3}0.965{col 54}{space 4}-.0580666{col 67}{space 3} .0607602
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}       .8{col 26}{space 2} .0194095{col 37}{space 1}   41.22{col 46}{space 3}0.000{col 54}{space 4} .7618939{col 67}{space 3} .8381061
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}.8
+
+{txt}added scalar:
+             e(mean_1) =  {res}.8013468
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.65
+{txt}       Model {c |} {res}  .06090711         1   .06090711   {txt}Prob > F        ={res}    0.4220
+{txt}    Residual {c |} {res} 67.9390929       720  .094359851   {txt}R-squared       ={res}    0.0009
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0005
+{txt}       Total {c |} {res}         68       721  .094313454   {txt}Root MSE        =   {res} .30718
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    hispanic{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2}-.0186651{col 26}{space 2} .0232322{col 37}{space 1}   -0.80{col 46}{space 3}0.422{col 54}{space 4}-.0642759{col 67}{space 3} .0269458
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .1129412{col 26}{space 2} .0149004{col 37}{space 1}    7.58{col 46}{space 3}0.000{col 54}{space 4} .0836877{col 67}{space 3} .1421947
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}.11294118
+
+{txt}added scalar:
+             e(mean_1) =  {res}.09427609
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.15
+{txt}       Model {c |} {res} .020027564         1  .020027564   {txt}Prob > F        ={res}    0.7014
+{txt}    Residual {c |} {res} 98.0201386       720  .136139081   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 98.0401662       721  .135978039   {txt}Root MSE        =   {res} .36897
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     married{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .0107031{col 26}{space 2} .0279053{col 37}{space 1}    0.38{col 46}{space 3}0.701{col 54}{space 4}-.0440824{col 67}{space 3} .0654887
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .1576471{col 26}{space 2} .0178977{col 37}{space 1}    8.81{col 46}{space 3}0.000{col 54}{space 4} .1225092{col 67}{space 3}  .192785
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}.15764706
+
+{txt}added scalar:
+             e(mean_1) =  {res}.16835017
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     7.15
+{txt}       Model {c |} {res} 1.21829197         1  1.21829197   {txt}Prob > F        ={res}    0.0077
+{txt}    Residual {c |} {res} 122.766473       720   .17050899   {txt}R-squared       ={res}    0.0098
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0085
+{txt}       Total {c |} {res} 123.984765       721  .171962225   {txt}Root MSE        =   {res} .41293
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    nodegree{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2}-.0834779{col 26}{space 2} .0312298{col 37}{space 1}   -2.67{col 46}{space 3}0.008{col 54}{space 4}-.1447903{col 67}{space 3}-.0221655
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .8141176{col 26}{space 2} .0200299{col 37}{space 1}   40.65{col 46}{space 3}0.000{col 54}{space 4} .7747936{col 67}{space 3} .8534417
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}.81411765
+
+{txt}added scalar:
+             e(mean_1) =  {res}.73063973
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.01
+{txt}       Model {c |} {res}  271606.92         1   271606.92   {txt}Prob > F        ={res}    0.9182
+{txt}    Residual {c |} {res} 1.8505e+10       720  25701078.5   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0014
+{txt}       Total {c |} {res} 1.8505e+10       721  25665808.8   {txt}Root MSE        =   {res} 5069.6
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re75{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} 39.41544{col 26}{space 2} 383.4172{col 37}{space 1}    0.10{col 46}{space 3}0.918{col 54}{space 4}-713.3338{col 67}{space 3} 792.1647
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 3026.683{col 26}{space 2} 245.9128{col 37}{space 1}   12.31{col 46}{space 3}0.000{col 54}{space 4} 2543.891{col 67}{space 3} 3509.475
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}3026.6828
+
+{txt}added scalar:
+             e(mean_1) =  {res}3066.0982
+{txt}
+{com}. 
+. esttab `vars', b(%9.1f) se(%9.1f) label ///
+> s(mean_0 mean_1, labels("Group 1 (25 schools)" "Group 2 (25 schools)") ///
+> fmt(%9.2f)) ///
+> starlevels(* 0.1 ** 0.05 *** 0.01) ///
+
+{txt}end of do-file
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. 
+. local vars age education black hispanic married nodegree re75
+{txt}
+{com}. 
+. foreach i of varlist `vars' {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.00
+{txt}       Model {c |} {res} .000317114         1  .000317114   {txt}Prob > F        ={res}    0.9645
+{txt}    Residual {c |} {res} 115.279461       720  .160110363   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0014
+{txt}       Total {c |} {res} 115.279778       721  .159888736   {txt}Root MSE        =   {res} .40014
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       black{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .0013468{col 26}{space 2} .0302626{col 37}{space 1}    0.04{col 46}{space 3}0.965{col 54}{space 4}-.0580666{col 67}{space 3} .0607602
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}       .8{col 26}{space 2} .0194095{col 37}{space 1}   41.22{col 46}{space 3}0.000{col 54}{space 4} .7618939{col 67}{space 3} .8381061
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}.8
+
+{txt}added scalar:
+             e(mean_1) =  {res}.8013468
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.65
+{txt}       Model {c |} {res}  .06090711         1   .06090711   {txt}Prob > F        ={res}    0.4220
+{txt}    Residual {c |} {res} 67.9390929       720  .094359851   {txt}R-squared       ={res}    0.0009
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0005
+{txt}       Total {c |} {res}         68       721  .094313454   {txt}Root MSE        =   {res} .30718
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    hispanic{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2}-.0186651{col 26}{space 2} .0232322{col 37}{space 1}   -0.80{col 46}{space 3}0.422{col 54}{space 4}-.0642759{col 67}{space 3} .0269458
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .1129412{col 26}{space 2} .0149004{col 37}{space 1}    7.58{col 46}{space 3}0.000{col 54}{space 4} .0836877{col 67}{space 3} .1421947
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}.11294118
+
+{txt}added scalar:
+             e(mean_1) =  {res}.09427609
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.15
+{txt}       Model {c |} {res} .020027564         1  .020027564   {txt}Prob > F        ={res}    0.7014
+{txt}    Residual {c |} {res} 98.0201386       720  .136139081   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 98.0401662       721  .135978039   {txt}Root MSE        =   {res} .36897
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     married{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .0107031{col 26}{space 2} .0279053{col 37}{space 1}    0.38{col 46}{space 3}0.701{col 54}{space 4}-.0440824{col 67}{space 3} .0654887
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .1576471{col 26}{space 2} .0178977{col 37}{space 1}    8.81{col 46}{space 3}0.000{col 54}{space 4} .1225092{col 67}{space 3}  .192785
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}.15764706
+
+{txt}added scalar:
+             e(mean_1) =  {res}.16835017
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     7.15
+{txt}       Model {c |} {res} 1.21829197         1  1.21829197   {txt}Prob > F        ={res}    0.0077
+{txt}    Residual {c |} {res} 122.766473       720   .17050899   {txt}R-squared       ={res}    0.0098
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0085
+{txt}       Total {c |} {res} 123.984765       721  .171962225   {txt}Root MSE        =   {res} .41293
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    nodegree{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2}-.0834779{col 26}{space 2} .0312298{col 37}{space 1}   -2.67{col 46}{space 3}0.008{col 54}{space 4}-.1447903{col 67}{space 3}-.0221655
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .8141176{col 26}{space 2} .0200299{col 37}{space 1}   40.65{col 46}{space 3}0.000{col 54}{space 4} .7747936{col 67}{space 3} .8534417
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}.81411765
+
+{txt}added scalar:
+             e(mean_1) =  {res}.73063973
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.01
+{txt}       Model {c |} {res}  271606.92         1   271606.92   {txt}Prob > F        ={res}    0.9182
+{txt}    Residual {c |} {res} 1.8505e+10       720  25701078.5   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0014
+{txt}       Total {c |} {res} 1.8505e+10       721  25665808.8   {txt}Root MSE        =   {res} 5069.6
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re75{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} 39.41544{col 26}{space 2} 383.4172{col 37}{space 1}    0.10{col 46}{space 3}0.918{col 54}{space 4}-713.3338{col 67}{space 3} 792.1647
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 3026.683{col 26}{space 2} 245.9128{col 37}{space 1}   12.31{col 46}{space 3}0.000{col 54}{space 4} 2543.891{col 67}{space 3} 3509.475
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}3026.6828
+
+{txt}added scalar:
+             e(mean_1) =  {res}3066.0982
+{txt}
+{com}. 
+. esttab `vars', b(%9.1f) se(%9.1f) label ///
+> s(mean_0 mean_1, labels("Group 1 (25 schools)" "Group 2 (25 schools)") ///
+> fmt(%9.2f)) ///
+> starlevels(* 0.1 ** 0.05 *** 0.01) 
+{res}
+{txt}{hline 132}
+{txt}                              (1)             (2)             (3)             (4)             (5)             (6)             (7)   
+{txt}                              age       education           black        hispanic         married        nodegree            re75   
+{txt}{hline 132}
+{txt}treat               {res}          0.2             0.2             0.0            -0.0             0.0            -0.1***         39.4   {txt}
+                    {res} {ralign 12:{txt:(}0.5{txt:)}}    {ralign 12:{txt:(}0.1{txt:)}}    {ralign 12:{txt:(}0.0{txt:)}}    {ralign 12:{txt:(}0.0{txt:)}}    {ralign 12:{txt:(}0.0{txt:)}}    {ralign 12:{txt:(}0.0{txt:)}}    {ralign 12:{txt:(}383.4{txt:)}}   {txt}
+
+{txt}Constant            {res}         24.4***         10.2***          0.8***          0.1***          0.2***          0.8***       3026.7***{txt}
+                    {res} {ralign 12:{txt:(}0.3{txt:)}}    {ralign 12:{txt:(}0.1{txt:)}}    {ralign 12:{txt:(}0.0{txt:)}}    {ralign 12:{txt:(}0.0{txt:)}}    {ralign 12:{txt:(}0.0{txt:)}}    {ralign 12:{txt:(}0.0{txt:)}}    {ralign 12:{txt:(}245.9{txt:)}}   {txt}
+{txt}{hline 132}
+{txt}Group 1 (25 schools){res}        24.45           10.19            0.80            0.11            0.16            0.81         3026.68   {txt}
+{txt}Group 2 (25 schools){res}        24.63           10.38            0.80            0.09            0.17            0.73         3066.10   {txt}
+{txt}{hline 132}
+{txt}Standard errors in parentheses
+{txt}* p<0.1, ** p<0.05, *** p<0.01
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. 
+. local vars age education black hispanic married nodegree re75
+{txt}
+{com}. 
+. foreach i of varlist `vars' {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.00
+{txt}       Model {c |} {res} .000317114         1  .000317114   {txt}Prob > F        ={res}    0.9645
+{txt}    Residual {c |} {res} 115.279461       720  .160110363   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0014
+{txt}       Total {c |} {res} 115.279778       721  .159888736   {txt}Root MSE        =   {res} .40014
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       black{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .0013468{col 26}{space 2} .0302626{col 37}{space 1}    0.04{col 46}{space 3}0.965{col 54}{space 4}-.0580666{col 67}{space 3} .0607602
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}       .8{col 26}{space 2} .0194095{col 37}{space 1}   41.22{col 46}{space 3}0.000{col 54}{space 4} .7618939{col 67}{space 3} .8381061
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}.8
+
+{txt}added scalar:
+             e(mean_1) =  {res}.8013468
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.65
+{txt}       Model {c |} {res}  .06090711         1   .06090711   {txt}Prob > F        ={res}    0.4220
+{txt}    Residual {c |} {res} 67.9390929       720  .094359851   {txt}R-squared       ={res}    0.0009
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0005
+{txt}       Total {c |} {res}         68       721  .094313454   {txt}Root MSE        =   {res} .30718
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    hispanic{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2}-.0186651{col 26}{space 2} .0232322{col 37}{space 1}   -0.80{col 46}{space 3}0.422{col 54}{space 4}-.0642759{col 67}{space 3} .0269458
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .1129412{col 26}{space 2} .0149004{col 37}{space 1}    7.58{col 46}{space 3}0.000{col 54}{space 4} .0836877{col 67}{space 3} .1421947
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}.11294118
+
+{txt}added scalar:
+             e(mean_1) =  {res}.09427609
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.15
+{txt}       Model {c |} {res} .020027564         1  .020027564   {txt}Prob > F        ={res}    0.7014
+{txt}    Residual {c |} {res} 98.0201386       720  .136139081   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 98.0401662       721  .135978039   {txt}Root MSE        =   {res} .36897
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     married{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .0107031{col 26}{space 2} .0279053{col 37}{space 1}    0.38{col 46}{space 3}0.701{col 54}{space 4}-.0440824{col 67}{space 3} .0654887
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .1576471{col 26}{space 2} .0178977{col 37}{space 1}    8.81{col 46}{space 3}0.000{col 54}{space 4} .1225092{col 67}{space 3}  .192785
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}.15764706
+
+{txt}added scalar:
+             e(mean_1) =  {res}.16835017
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     7.15
+{txt}       Model {c |} {res} 1.21829197         1  1.21829197   {txt}Prob > F        ={res}    0.0077
+{txt}    Residual {c |} {res} 122.766473       720   .17050899   {txt}R-squared       ={res}    0.0098
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0085
+{txt}       Total {c |} {res} 123.984765       721  .171962225   {txt}Root MSE        =   {res} .41293
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    nodegree{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2}-.0834779{col 26}{space 2} .0312298{col 37}{space 1}   -2.67{col 46}{space 3}0.008{col 54}{space 4}-.1447903{col 67}{space 3}-.0221655
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .8141176{col 26}{space 2} .0200299{col 37}{space 1}   40.65{col 46}{space 3}0.000{col 54}{space 4} .7747936{col 67}{space 3} .8534417
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}.81411765
+
+{txt}added scalar:
+             e(mean_1) =  {res}.73063973
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.01
+{txt}       Model {c |} {res}  271606.92         1   271606.92   {txt}Prob > F        ={res}    0.9182
+{txt}    Residual {c |} {res} 1.8505e+10       720  25701078.5   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0014
+{txt}       Total {c |} {res} 1.8505e+10       721  25665808.8   {txt}Root MSE        =   {res} 5069.6
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re75{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} 39.41544{col 26}{space 2} 383.4172{col 37}{space 1}    0.10{col 46}{space 3}0.918{col 54}{space 4}-713.3338{col 67}{space 3} 792.1647
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 3026.683{col 26}{space 2} 245.9128{col 37}{space 1}   12.31{col 46}{space 3}0.000{col 54}{space 4} 2543.891{col 67}{space 3} 3509.475
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}3026.6828
+
+{txt}added scalar:
+             e(mean_1) =  {res}3066.0982
+{txt}
+{com}. 
+. esttab `vars', b(%9.1f) se(%9.1f) label ///
+> s(mean_0 mean_1, labels("Group 1 (25 schools)" "Group 2 (25 schools)") ///
+> fmt(%9.2f)) ///
+> starlevels(* 0.1 ** 0.05 *** 0.01)///
+{err}option {bf:/} not allowed
+{txt}{search r(198), local:r(198);}
+
+end of do-file
+
+{search r(198), local:r(198);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD9768_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. estimates clear
+{res}{txt}
+{com}. 
+. local vars age education black hispanic married nodegree re75
+{txt}
+{com}. 
+. foreach i of varlist `vars' {c -(}
+{txt}  2{com}.     regress `i' treat
+{txt}  3{com}.         forvalues j = 0/1{c -(}
+{txt}  4{com}.                 qui sum `i' if treat == `j'
+{txt}  5{com}.                 estadd scalar mean_`j' = r(mean)
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.         est store `i'
+{txt}  8{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.13
+{txt}       Model {c |} {res} 5.61439061         1  5.61439061   {txt}Prob > F        ={res}    0.7209
+{txt}    Residual {c |} {res}  31648.574       720  43.9563527   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 31654.1884       721  43.9031739   {txt}Root MSE        =   {res}   6.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         age{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1792038{col 26}{space 2} .5014259{col 37}{space 1}    0.36{col 46}{space 3}0.721{col 54}{space 4}-.8052277{col 67}{space 3} 1.163635
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 24.44706{col 26}{space 2} .3216002{col 37}{space 1}   76.02{col 46}{space 3}0.000{col 54}{space 4} 23.81567{col 67}{space 3} 25.07845
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}24.447059
+
+{txt}added scalar:
+             e(mean_1) =  {res}24.626263
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     2.23
+{txt}       Model {c |} {res} 6.46067678         1  6.46067678   {txt}Prob > F        ={res}    0.1361
+{txt}    Residual {c |} {res} 2088.94791       720  2.90131654   {txt}R-squared       ={res}    0.0031
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0017
+{txt}       Total {c |} {res} 2095.40859       721  2.90625324   {txt}Root MSE        =   {res} 1.7033
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   education{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .1922361{col 26}{space 2}  .128823{col 37}{space 1}    1.49{col 46}{space 3}0.136{col 54}{space 4}-.0606775{col 67}{space 3} .4451497
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.18824{col 26}{space 2} .0826234{col 37}{space 1}  123.31{col 46}{space 3}0.000{col 54}{space 4} 10.02602{col 67}{space 3} 10.35045
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}10.188235
+
+{txt}added scalar:
+             e(mean_1) =  {res}10.380471
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.00
+{txt}       Model {c |} {res} .000317114         1  .000317114   {txt}Prob > F        ={res}    0.9645
+{txt}    Residual {c |} {res} 115.279461       720  .160110363   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0014
+{txt}       Total {c |} {res} 115.279778       721  .159888736   {txt}Root MSE        =   {res} .40014
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       black{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .0013468{col 26}{space 2} .0302626{col 37}{space 1}    0.04{col 46}{space 3}0.965{col 54}{space 4}-.0580666{col 67}{space 3} .0607602
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}       .8{col 26}{space 2} .0194095{col 37}{space 1}   41.22{col 46}{space 3}0.000{col 54}{space 4} .7618939{col 67}{space 3} .8381061
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}.8
+
+{txt}added scalar:
+             e(mean_1) =  {res}.8013468
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.65
+{txt}       Model {c |} {res}  .06090711         1   .06090711   {txt}Prob > F        ={res}    0.4220
+{txt}    Residual {c |} {res} 67.9390929       720  .094359851   {txt}R-squared       ={res}    0.0009
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0005
+{txt}       Total {c |} {res}         68       721  .094313454   {txt}Root MSE        =   {res} .30718
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    hispanic{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2}-.0186651{col 26}{space 2} .0232322{col 37}{space 1}   -0.80{col 46}{space 3}0.422{col 54}{space 4}-.0642759{col 67}{space 3} .0269458
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .1129412{col 26}{space 2} .0149004{col 37}{space 1}    7.58{col 46}{space 3}0.000{col 54}{space 4} .0836877{col 67}{space 3} .1421947
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}.11294118
+
+{txt}added scalar:
+             e(mean_1) =  {res}.09427609
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.15
+{txt}       Model {c |} {res} .020027564         1  .020027564   {txt}Prob > F        ={res}    0.7014
+{txt}    Residual {c |} {res} 98.0201386       720  .136139081   {txt}R-squared       ={res}    0.0002
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 98.0401662       721  .135978039   {txt}Root MSE        =   {res} .36897
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     married{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} .0107031{col 26}{space 2} .0279053{col 37}{space 1}    0.38{col 46}{space 3}0.701{col 54}{space 4}-.0440824{col 67}{space 3} .0654887
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .1576471{col 26}{space 2} .0178977{col 37}{space 1}    8.81{col 46}{space 3}0.000{col 54}{space 4} .1225092{col 67}{space 3}  .192785
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}.15764706
+
+{txt}added scalar:
+             e(mean_1) =  {res}.16835017
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     7.15
+{txt}       Model {c |} {res} 1.21829197         1  1.21829197   {txt}Prob > F        ={res}    0.0077
+{txt}    Residual {c |} {res} 122.766473       720   .17050899   {txt}R-squared       ={res}    0.0098
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0085
+{txt}       Total {c |} {res} 123.984765       721  .171962225   {txt}Root MSE        =   {res} .41293
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    nodegree{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2}-.0834779{col 26}{space 2} .0312298{col 37}{space 1}   -2.67{col 46}{space 3}0.008{col 54}{space 4}-.1447903{col 67}{space 3}-.0221655
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .8141176{col 26}{space 2} .0200299{col 37}{space 1}   40.65{col 46}{space 3}0.000{col 54}{space 4} .7747936{col 67}{space 3} .8534417
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}.81411765
+
+{txt}added scalar:
+             e(mean_1) =  {res}.73063973
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     0.01
+{txt}       Model {c |} {res}  271606.92         1   271606.92   {txt}Prob > F        ={res}    0.9182
+{txt}    Residual {c |} {res} 1.8505e+10       720  25701078.5   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0014
+{txt}       Total {c |} {res} 1.8505e+10       721  25665808.8   {txt}Root MSE        =   {res} 5069.6
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re75{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} 39.41544{col 26}{space 2} 383.4172{col 37}{space 1}    0.10{col 46}{space 3}0.918{col 54}{space 4}-713.3338{col 67}{space 3} 792.1647
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 3026.683{col 26}{space 2} 245.9128{col 37}{space 1}   12.31{col 46}{space 3}0.000{col 54}{space 4} 2543.891{col 67}{space 3} 3509.475
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}added scalar:
+             e(mean_0) =  {res}3026.6828
+
+{txt}added scalar:
+             e(mean_1) =  {res}3066.0982
+{txt}
+{com}. 
+. esttab `vars', b(%9.1f) se(%9.1f) label ///
+> s(mean_0 mean_1, labels("Group 1 (25 schools)" "Group 2 (25 schools)") ///
+> fmt(%9.2f)) ///
+> starlevels(* 0.1 ** 0.05 *** 0.01) ///
+> drop(_cons)
+{res}
+{txt}{hline 132}
+{txt}                              (1)             (2)             (3)             (4)             (5)             (6)             (7)   
+{txt}                              age       education           black        hispanic         married        nodegree            re75   
+{txt}{hline 132}
+{txt}treat               {res}          0.2             0.2             0.0            -0.0             0.0            -0.1***         39.4   {txt}
+                    {res} {ralign 12:{txt:(}0.5{txt:)}}    {ralign 12:{txt:(}0.1{txt:)}}    {ralign 12:{txt:(}0.0{txt:)}}    {ralign 12:{txt:(}0.0{txt:)}}    {ralign 12:{txt:(}0.0{txt:)}}    {ralign 12:{txt:(}0.0{txt:)}}    {ralign 12:{txt:(}383.4{txt:)}}   {txt}
+{txt}{hline 132}
+{txt}Group 1 (25 schools){res}        24.45           10.19            0.80            0.11            0.16            0.81         3026.68   {txt}
+{txt}Group 2 (25 schools){res}        24.63           10.38            0.80            0.09            0.17            0.73         3066.10   {txt}
+{txt}{hline 132}
+{txt}Standard errors in parentheses
+{txt}* p<0.1, ** p<0.05, *** p<0.01
+
+{com}. 
+{txt}end of do-file
+
+{com}. exit, clear
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}D:\Dropbox\work files\23春课程\高级计量经济学2\Homework 2 - Matching\log_HW2.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}22 Mar 2023, 16:43:38
+
+{com}. eststo clear
+
+. regress re78 treat
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     3.52
+{txt}       Model {c |} {res}  137332501         1   137332501   {txt}Prob > F        ={res}    0.0609
+{txt}    Residual {c |} {res} 2.8053e+10       720  38962866.3   {txt}R-squared       ={res}    0.0049
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0035
+{txt}       Total {c |} {res} 2.8191e+10       721  39099301.3   {txt}Root MSE        =   {res}   6242
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re78{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} 886.3037{col 26}{space 2} 472.0863{col 37}{space 1}    1.88{col 46}{space 3}0.061{col 54}{space 4}-40.52635{col 67}{space 3} 1813.134
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 5090.048{col 26}{space 2} 302.7826{col 37}{space 1}   16.81{col 46}{space 3}0.000{col 54}{space 4} 4495.606{col 67}{space 3} 5684.491
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress re78 treat age
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(2, 719)       = {res}     1.97
+{txt}       Model {c |} {res}  153869027         2  76934513.5   {txt}Prob > F        ={res}    0.1398
+{txt}    Residual {c |} {res} 2.8037e+10       719  38994057.3   {txt}R-squared       ={res}    0.0055
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0027
+{txt}       Total {c |} {res} 2.8191e+10       721  39099301.3   {txt}Root MSE        =   {res} 6244.5
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re78{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} 882.2074{col 26}{space 2} 472.3171{col 37}{space 1}    1.87{col 46}{space 3}0.062{col 54}{space 4}-45.07797{col 67}{space 3} 1809.493
+{txt}{space 9}age {c |}{col 14}{res}{space 2} 22.85836{col 26}{space 2} 35.10121{col 37}{space 1}    0.65{col 46}{space 3}0.515{col 54}{space 4}-46.05476{col 67}{space 3} 91.77148
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 4531.229{col 26}{space 2} 910.0127{col 37}{space 1}    4.98{col 46}{space 3}0.000{col 54}{space 4} 2744.629{col 67}{space 3} 6317.828
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress re78 treat age age_sqared
+{err}variable {bf}age_sqared{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. gen age
+{err}variable {bf}age{sf} already defined
+{txt}{search r(110), local:r(110);}
+
+{com}. gen age_squared = age *age
+
+. gen education_squared = education * education
+
+. regress re78 treat age age_sqared
+{err}variable {bf}age_sqared{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. regress re78 treat age age_squared
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(3, 718)       = {res}     1.35
+{txt}       Model {c |} {res}  157635983         3  52545327.6   {txt}Prob > F        ={res}    0.2584
+{txt}    Residual {c |} {res} 2.8033e+10       718  39043120.2   {txt}R-squared       ={res}    0.0056
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0014
+{txt}       Total {c |} {res} 2.8191e+10       721  39099301.3   {txt}Root MSE        =   {res} 6248.4
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re78{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} 881.7396{col 26}{space 2} 472.6165{col 37}{space 1}    1.87{col 46}{space 3}0.062{col 54}{space 4}-46.13583{col 67}{space 3} 1809.615
+{txt}{space 9}age {c |}{col 14}{res}{space 2} 85.52218{col 26}{space 2} 204.7756{col 37}{space 1}    0.42{col 46}{space 3}0.676{col 54}{space 4}-316.5082{col 67}{space 3} 487.5526
+{txt}{space 1}age_squared {c |}{col 14}{res}{space 2}-1.073832{col 26}{space 2} 3.457113{col 37}{space 1}   -0.31{col 46}{space 3}0.756{col 54}{space 4} -7.86109{col 67}{space 3} 5.713425
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 3687.596{col 26}{space 2} 2864.583{col 37}{space 1}    1.29{col 46}{space 3}0.198{col 54}{space 4}-1936.363{col 67}{space 3} 9311.556
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress re78 treat age age_squared black
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(4, 717)       = {res}     3.10
+{txt}       Model {c |} {res}  478590796         4   119647699   {txt}Prob > F        ={res}    0.0153
+{txt}    Residual {c |} {res} 2.7712e+10       717  38649937.9   {txt}R-squared       ={res}    0.0170
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0115
+{txt}       Total {c |} {res} 2.8191e+10       721  39099301.3   {txt}Root MSE        =   {res} 6216.9
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re78{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} 882.1346{col 26}{space 2} 470.2308{col 37}{space 1}    1.88{col 46}{space 3}0.061{col 54}{space 4}-41.05919{col 67}{space 3} 1805.328
+{txt}{space 9}age {c |}{col 14}{res}{space 2} 118.2533{col 26}{space 2} 204.0582{col 37}{space 1}    0.58{col 46}{space 3}0.562{col 54}{space 4}-282.3697{col 67}{space 3} 518.8763
+{txt}{space 1}age_squared {c |}{col 14}{res}{space 2}-1.473121{col 26}{space 2} 3.442451{col 37}{space 1}   -0.43{col 46}{space 3}0.669{col 54}{space 4}-8.231609{col 67}{space 3} 5.285367
+{txt}{space 7}black {c |}{col 14}{res}{space 2}-1677.224{col 26}{space 2} 582.0274{col 37}{space 1}   -2.88{col 46}{space 3}0.004{col 54}{space 4}-2819.905{col 67}{space 3} -534.542
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 4485.136{col 26}{space 2} 2863.528{col 37}{space 1}    1.57{col 46}{space 3}0.118{col 54}{space 4}-1136.767{col 67}{space 3} 10107.04
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. gen re75_2 = re75 * re75
+
+. do "C:\Users\zwy99\AppData\Local\Temp\STD4d3c_000000.tmp"
+{txt}
+{com}. regress re78 treat
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     3.52
+{txt}       Model {c |} {res}  137332501         1   137332501   {txt}Prob > F        ={res}    0.0609
+{txt}    Residual {c |} {res} 2.8053e+10       720  38962866.3   {txt}R-squared       ={res}    0.0049
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0035
+{txt}       Total {c |} {res} 2.8191e+10       721  39099301.3   {txt}Root MSE        =   {res}   6242
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re78{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} 886.3037{col 26}{space 2} 472.0863{col 37}{space 1}    1.88{col 46}{space 3}0.061{col 54}{space 4}-40.52635{col 67}{space 3} 1813.134
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 5090.048{col 26}{space 2} 302.7826{col 37}{space 1}   16.81{col 46}{space 3}0.000{col 54}{space 4} 4495.606{col 67}{space 3} 5684.491
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. eststo m1
+{txt}
+{com}. regress re78 treat age
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(2, 719)       = {res}     1.97
+{txt}       Model {c |} {res}  153869027         2  76934513.5   {txt}Prob > F        ={res}    0.1398
+{txt}    Residual {c |} {res} 2.8037e+10       719  38994057.3   {txt}R-squared       ={res}    0.0055
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0027
+{txt}       Total {c |} {res} 2.8191e+10       721  39099301.3   {txt}Root MSE        =   {res} 6244.5
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re78{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} 882.2074{col 26}{space 2} 472.3171{col 37}{space 1}    1.87{col 46}{space 3}0.062{col 54}{space 4}-45.07797{col 67}{space 3} 1809.493
+{txt}{space 9}age {c |}{col 14}{res}{space 2} 22.85836{col 26}{space 2} 35.10121{col 37}{space 1}    0.65{col 46}{space 3}0.515{col 54}{space 4}-46.05476{col 67}{space 3} 91.77148
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 4531.229{col 26}{space 2} 910.0127{col 37}{space 1}    4.98{col 46}{space 3}0.000{col 54}{space 4} 2744.629{col 67}{space 3} 6317.828
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. eststo m2
+{txt}
+{com}. regress re78 treat age age_squared
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(3, 718)       = {res}     1.35
+{txt}       Model {c |} {res}  157635983         3  52545327.6   {txt}Prob > F        ={res}    0.2584
+{txt}    Residual {c |} {res} 2.8033e+10       718  39043120.2   {txt}R-squared       ={res}    0.0056
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0014
+{txt}       Total {c |} {res} 2.8191e+10       721  39099301.3   {txt}Root MSE        =   {res} 6248.4
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re78{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} 881.7396{col 26}{space 2} 472.6165{col 37}{space 1}    1.87{col 46}{space 3}0.062{col 54}{space 4}-46.13583{col 67}{space 3} 1809.615
+{txt}{space 9}age {c |}{col 14}{res}{space 2} 85.52218{col 26}{space 2} 204.7756{col 37}{space 1}    0.42{col 46}{space 3}0.676{col 54}{space 4}-316.5082{col 67}{space 3} 487.5526
+{txt}{space 1}age_squared {c |}{col 14}{res}{space 2}-1.073832{col 26}{space 2} 3.457113{col 37}{space 1}   -0.31{col 46}{space 3}0.756{col 54}{space 4} -7.86109{col 67}{space 3} 5.713425
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 3687.596{col 26}{space 2} 2864.583{col 37}{space 1}    1.29{col 46}{space 3}0.198{col 54}{space 4}-1936.363{col 67}{space 3} 9311.556
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. eststo m3
+{txt}
+{com}. regress re78 treat age age_squared education
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(4, 717)       = {res}     1.96
+{txt}       Model {c |} {res}  304826244         4    76206561   {txt}Prob > F        ={res}    0.0989
+{txt}    Residual {c |} {res} 2.7886e+10       717  38892287.3   {txt}R-squared       ={res}    0.0108
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0053
+{txt}       Total {c |} {res} 2.8191e+10       721  39099301.3   {txt}Root MSE        =   {res} 6236.4
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re78{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} 830.0749{col 26}{space 2} 472.4497{col 37}{space 1}    1.76{col 46}{space 3}0.079{col 54}{space 4}-97.47534{col 67}{space 3} 1757.625
+{txt}{space 9}age {c |}{col 14}{res}{space 2}-17.43312{col 26}{space 2} 211.1204{col 37}{space 1}   -0.08{col 46}{space 3}0.934{col 54}{space 4}-431.9212{col 67}{space 3}  397.055
+{txt}{space 1}age_squared {c |}{col 14}{res}{space 2} .6617217{col 26}{space 2} 3.563897{col 37}{space 1}    0.19{col 46}{space 3}0.853{col 54}{space 4}-6.335198{col 67}{space 3} 7.658642
+{txt}{space 3}education {c |}{col 14}{res}{space 2} 274.2526{col 26}{space 2} 140.9753{col 37}{space 1}    1.95{col 46}{space 3}0.052{col 54}{space 4}-2.521074{col 67}{space 3} 551.0263
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 2297.931{col 26}{space 2} 2946.932{col 37}{space 1}    0.78{col 46}{space 3}0.436{col 54}{space 4}-3487.717{col 67}{space 3} 8083.578
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. eststo m4
+{txt}
+{com}. regress re78 treat age age_squared education education_squared
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(5, 716)       = {res}     2.10
+{txt}       Model {c |} {res}  407897990         5    81579598   {txt}Prob > F        ={res}    0.0633
+{txt}    Residual {c |} {res} 2.7783e+10       716  38802651.2   {txt}R-squared       ={res}    0.0145
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0076
+{txt}       Total {c |} {res} 2.8191e+10       721  39099301.3   {txt}Root MSE        =   {res} 6229.2
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}             re78{col 19}{c |} Coefficient{col 31}  Std. err.{col 43}      t{col 51}   P>|t|{col 59}     [95% con{col 72}f. interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}treat {c |}{col 19}{res}{space 2} 763.8983{col 31}{space 2} 473.6486{col 42}{space 1}    1.61{col 51}{space 3}0.107{col 59}{space 4}-166.0077{col 72}{space 3} 1693.804
+{txt}{space 14}age {c |}{col 19}{res}{space 2}-25.08998{col 31}{space 2} 210.9293{col 42}{space 1}   -0.12{col 51}{space 3}0.905{col 59}{space 4}-439.2038{col 72}{space 3} 389.0239
+{txt}{space 6}age_squared {c |}{col 19}{res}{space 2} .5491032{col 31}{space 2} 3.560458{col 42}{space 1}    0.15{col 51}{space 3}0.877{col 59}{space 4}-6.441082{col 72}{space 3} 7.539289
+{txt}{space 8}education {c |}{col 19}{res}{space 2}-1179.195{col 31}{space 2} 902.8342{col 42}{space 1}   -1.31{col 51}{space 3}0.192{col 59}{space 4}-2951.714{col 72}{space 3} 593.3233
+{txt}education_squared {c |}{col 19}{res}{space 2} 75.13079{col 31}{space 2} 46.09765{col 42}{space 1}    1.63{col 51}{space 3}0.104{col 59}{space 4}-15.37194{col 72}{space 3} 165.6335
+{txt}{space 12}_cons {c |}{col 19}{res}{space 2}   9370.4{col 31}{space 2} 5243.566{col 42}{space 1}    1.79{col 51}{space 3}0.074{col 59}{space 4}-924.2025{col 72}{space 3}    19665
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. eststo m5
+{txt}
+{com}. regress re78 treat age age_squared education education_squared black
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(6, 715)       = {res}     3.20
+{txt}       Model {c |} {res}  737080340         6   122846723   {txt}Prob > F        ={res}    0.0042
+{txt}    Residual {c |} {res} 2.7454e+10       715  38396525.8   {txt}R-squared       ={res}    0.0261
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0180
+{txt}       Total {c |} {res} 2.8191e+10       721  39099301.3   {txt}Root MSE        =   {res} 6196.5
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}             re78{col 19}{c |} Coefficient{col 31}  Std. err.{col 43}      t{col 51}   P>|t|{col 59}     [95% con{col 72}f. interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}treat {c |}{col 19}{res}{space 2} 766.0143{col 31}{space 2} 471.1639{col 42}{space 1}    1.63{col 51}{space 3}0.104{col 59}{space 4}-159.0158{col 72}{space 3} 1691.044
+{txt}{space 14}age {c |}{col 19}{res}{space 2}-.0891706{col 31}{space 2} 209.9962{col 42}{space 1}   -0.00{col 51}{space 3}1.000{col 59}{space 4}-412.3721{col 72}{space 3} 412.1938
+{txt}{space 6}age_squared {c |}{col 19}{res}{space 2} .3052419{col 31}{space 2} 3.542755{col 42}{space 1}    0.09{col 51}{space 3}0.931{col 59}{space 4}-6.650205{col 72}{space 3} 7.260689
+{txt}{space 8}education {c |}{col 19}{res}{space 2}-1018.803{col 31}{space 2} 899.7661{col 42}{space 1}   -1.13{col 51}{space 3}0.258{col 59}{space 4}-2785.303{col 72}{space 3} 747.6961
+{txt}education_squared {c |}{col 19}{res}{space 2} 68.07476{col 31}{space 2} 45.91906{col 42}{space 1}    1.48{col 51}{space 3}0.139{col 59}{space 4}-22.07755{col 72}{space 3} 158.2271
+{txt}{space 12}black {c |}{col 19}{res}{space 2}-1703.804{col 31}{space 2} 581.8986{col 42}{space 1}   -2.93{col 51}{space 3}0.004{col 59}{space 4}-2846.238{col 72}{space 3}-561.3698
+{txt}{space 12}_cons {c |}{col 19}{res}{space 2} 9395.307{col 31}{space 2}  5216.06{col 42}{space 1}    1.80{col 51}{space 3}0.072{col 59}{space 4}-845.3174{col 72}{space 3} 19635.93
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. eststo m6
+{txt}
+{com}. regress re78 treat age age_squared education education_squared black married
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(7, 714)       = {res}     2.86
+{txt}       Model {c |} {res}  767953996         7   109707714   {txt}Prob > F        ={res}    0.0060
+{txt}    Residual {c |} {res} 2.7423e+10       714    38407062   {txt}R-squared       ={res}    0.0272
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0177
+{txt}       Total {c |} {res} 2.8191e+10       721  39099301.3   {txt}Root MSE        =   {res} 6197.3
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}             re78{col 19}{c |} Coefficient{col 31}  Std. err.{col 43}      t{col 51}   P>|t|{col 59}     [95% con{col 72}f. interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}treat {c |}{col 19}{res}{space 2} 759.4913{col 31}{space 2} 471.2847{col 42}{space 1}    1.61{col 51}{space 3}0.108{col 59}{space 4}-165.7782{col 72}{space 3} 1684.761
+{txt}{space 14}age {c |}{col 19}{res}{space 2}-30.45318{col 31}{space 2}  212.738{col 42}{space 1}   -0.14{col 51}{space 3}0.886{col 59}{space 4}  -448.12{col 72}{space 3} 387.2136
+{txt}{space 6}age_squared {c |}{col 19}{res}{space 2} .6926858{col 31}{space 2} 3.569496{col 42}{space 1}    0.19{col 51}{space 3}0.846{col 59}{space 4}-6.315277{col 72}{space 3} 7.700649
+{txt}{space 8}education {c |}{col 19}{res}{space 2}-1060.022{col 31}{space 2} 901.0631{col 42}{space 1}   -1.18{col 51}{space 3}0.240{col 59}{space 4}-2829.072{col 72}{space 3} 709.0283
+{txt}education_squared {c |}{col 19}{res}{space 2} 70.18327{col 31}{space 2} 45.98553{col 42}{space 1}    1.53{col 51}{space 3}0.127{col 59}{space 4}-20.09976{col 72}{space 3} 160.4663
+{txt}{space 12}black {c |}{col 19}{res}{space 2}-1695.031{col 31}{space 2} 582.0607{col 42}{space 1}   -2.91{col 51}{space 3}0.004{col 59}{space 4}-2837.786{col 72}{space 3}-552.2755
+{txt}{space 10}married {c |}{col 19}{res}{space 2} 581.5591{col 31}{space 2} 648.6424{col 42}{space 1}    0.90{col 51}{space 3}0.370{col 59}{space 4}-691.9155{col 72}{space 3} 1855.034
+{txt}{space 12}_cons {c |}{col 19}{res}{space 2} 9986.138{col 31}{space 2} 5258.232{col 42}{space 1}    1.90{col 51}{space 3}0.058{col 59}{space 4}-337.3075{col 72}{space 3} 20309.58
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. eststo m7
+{txt}
+{com}. regress re78 treat age age_squared education education_squared black married re75
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(8, 713)       = {res}     4.29
+{txt}       Model {c |} {res} 1.2944e+09         8   161804847   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 2.6896e+10       713    37722521   {txt}R-squared       ={res}    0.0459
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0352
+{txt}       Total {c |} {res} 2.8191e+10       721  39099301.3   {txt}Root MSE        =   {res} 6141.9
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}             re78{col 19}{c |} Coefficient{col 31}  Std. err.{col 43}      t{col 51}   P>|t|{col 59}     [95% con{col 72}f. interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}treat {c |}{col 19}{res}{space 2}  763.807{col 31}{space 2} 467.0673{col 42}{space 1}    1.64{col 51}{space 3}0.102{col 59}{space 4}-153.1847{col 72}{space 3} 1680.799
+{txt}{space 14}age {c |}{col 19}{res}{space 2}-140.3614{col 31}{space 2} 212.8763{col 42}{space 1}   -0.66{col 51}{space 3}0.510{col 59}{space 4}-558.3008{col 72}{space 3}  277.578
+{txt}{space 6}age_squared {c |}{col 19}{res}{space 2} 2.499864{col 31}{space 2} 3.570463{col 42}{space 1}    0.70{col 51}{space 3}0.484{col 59}{space 4}-4.510015{col 72}{space 3} 9.509744
+{txt}{space 8}education {c |}{col 19}{res}{space 2}-1085.828{col 31}{space 2} 893.0237{col 42}{space 1}   -1.22{col 51}{space 3}0.224{col 59}{space 4}-2839.099{col 72}{space 3} 667.4421
+{txt}education_squared {c |}{col 19}{res}{space 2} 70.11612{col 31}{space 2} 45.57389{col 42}{space 1}    1.54{col 51}{space 3}0.124{col 59}{space 4}-19.35894{col 72}{space 3} 159.5912
+{txt}{space 12}black {c |}{col 19}{res}{space 2}-1476.926{col 31}{space 2}  579.797{col 42}{space 1}   -2.55{col 51}{space 3}0.011{col 59}{space 4} -2615.24{col 72}{space 3}-338.6127
+{txt}{space 10}married {c |}{col 19}{res}{space 2}  145.589{col 31}{space 2} 653.3426{col 42}{space 1}    0.22{col 51}{space 3}0.824{col 59}{space 4}-1137.116{col 72}{space 3} 1428.294
+{txt}{space 13}re75 {c |}{col 19}{res}{space 2} .1754019{col 31}{space 2} .0469507{col 42}{space 1}    3.74{col 51}{space 3}0.000{col 59}{space 4} .0832238{col 72}{space 3}   .26758
+{txt}{space 12}_cons {c |}{col 19}{res}{space 2} 11148.12{col 31}{space 2} 5220.436{col 42}{space 1}    2.14{col 51}{space 3}0.033{col 59}{space 4} 898.8571{col 72}{space 3} 21397.39
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. eststo m8
+{txt}
+{com}. regress re78 treat age age_squared education education_squared black married re75 re75_2
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(9, 712)       = {res}     3.96
+{txt}       Model {c |} {res} 1.3454e+09         9   149490881   {txt}Prob > F        ={res}    0.0001
+{txt}    Residual {c |} {res} 2.6845e+10       712  37703902.1   {txt}R-squared       ={res}    0.0477
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0357
+{txt}       Total {c |} {res} 2.8191e+10       721  39099301.3   {txt}Root MSE        =   {res} 6140.4
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}             re78{col 19}{c |} Coefficient{col 31}  Std. err.{col 43}      t{col 51}   P>|t|{col 59}     [95% con{col 72}f. interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}treat {c |}{col 19}{res}{space 2} 779.9836{col 31}{space 2} 467.1592{col 42}{space 1}    1.67{col 51}{space 3}0.095{col 59}{space 4}-137.1908{col 72}{space 3} 1697.158
+{txt}{space 14}age {c |}{col 19}{res}{space 2}-139.4936{col 31}{space 2} 212.8251{col 42}{space 1}   -0.66{col 51}{space 3}0.512{col 59}{space 4}-557.3334{col 72}{space 3} 278.3462
+{txt}{space 6}age_squared {c |}{col 19}{res}{space 2} 2.481313{col 31}{space 2} 3.569618{col 42}{space 1}    0.70{col 51}{space 3}0.487{col 59}{space 4}-4.526923{col 72}{space 3} 9.489549
+{txt}{space 8}education {c |}{col 19}{res}{space 2}-1059.538{col 31}{space 2} 893.0895{col 42}{space 1}   -1.19{col 51}{space 3}0.236{col 59}{space 4}-2812.942{col 72}{space 3} 693.8662
+{txt}education_squared {c |}{col 19}{res}{space 2} 69.48109{col 31}{space 2} 45.56591{col 42}{space 1}    1.52{col 51}{space 3}0.128{col 59}{space 4}-19.97853{col 72}{space 3} 158.9407
+{txt}{space 12}black {c |}{col 19}{res}{space 2}-1488.665{col 31}{space 2} 579.7418{col 42}{space 1}   -2.57{col 51}{space 3}0.010{col 59}{space 4}-2626.873{col 72}{space 3}-350.4569
+{txt}{space 10}married {c |}{col 19}{res}{space 2} 177.4902{col 31}{space 2} 653.7573{col 42}{space 1}    0.27{col 51}{space 3}0.786{col 59}{space 4}-1106.032{col 72}{space 3} 1461.013
+{txt}{space 13}re75 {c |}{col 19}{res}{space 2} .0741242{col 31}{space 2} .0989416{col 42}{space 1}    0.75{col 51}{space 3}0.454{col 59}{space 4}-.1201279{col 72}{space 3} .2683763
+{txt}{space 11}re75_2 {c |}{col 19}{res}{space 2} 4.76e-06{col 31}{space 2} 4.09e-06{col 42}{space 1}    1.16{col 51}{space 3}0.245{col 59}{space 4}-3.28e-06{col 72}{space 3} .0000128
+{txt}{space 12}_cons {c |}{col 19}{res}{space 2} 11077.29{col 31}{space 2} 5219.503{col 42}{space 1}    2.12{col 51}{space 3}0.034{col 59}{space 4} 829.8373{col 72}{space 3} 21324.75
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. eststo m9
+{txt}
+{com}. esttab
+{res}
+{txt}{hline 156}
+{txt}                      (1)             (2)             (3)             (4)             (5)             (6)             (7)             (8)             (9)   
+{txt}                     re78            re78            re78            re78            re78            re78            re78            re78            re78   
+{txt}{hline 156}
+{txt}treat       {res}        886.3           882.2           881.7           830.1           763.9           766.0           759.5           763.8           780.0   {txt}
+            {res} {ralign 12:{txt:(}1.88{txt:)}}    {ralign 12:{txt:(}1.87{txt:)}}    {ralign 12:{txt:(}1.87{txt:)}}    {ralign 12:{txt:(}1.76{txt:)}}    {ralign 12:{txt:(}1.61{txt:)}}    {ralign 12:{txt:(}1.63{txt:)}}    {ralign 12:{txt:(}1.61{txt:)}}    {ralign 12:{txt:(}1.64{txt:)}}    {ralign 12:{txt:(}1.67{txt:)}}   {txt}
+
+{txt}age         {res}                        22.86           85.52          -17.43          -25.09         -0.0892          -30.45          -140.4          -139.5   {txt}
+            {res}                 {ralign 12:{txt:(}0.65{txt:)}}    {ralign 12:{txt:(}0.42{txt:)}}    {ralign 12:{txt:(}-0.08{txt:)}}    {ralign 12:{txt:(}-0.12{txt:)}}    {ralign 12:{txt:(}-0.00{txt:)}}    {ralign 12:{txt:(}-0.14{txt:)}}    {ralign 12:{txt:(}-0.66{txt:)}}    {ralign 12:{txt:(}-0.66{txt:)}}   {txt}
+
+{txt}age_squared {res}                                       -1.074           0.662           0.549           0.305           0.693           2.500           2.481   {txt}
+            {res}                                 {ralign 12:{txt:(}-0.31{txt:)}}    {ralign 12:{txt:(}0.19{txt:)}}    {ralign 12:{txt:(}0.15{txt:)}}    {ralign 12:{txt:(}0.09{txt:)}}    {ralign 12:{txt:(}0.19{txt:)}}    {ralign 12:{txt:(}0.70{txt:)}}    {ralign 12:{txt:(}0.70{txt:)}}   {txt}
+
+{txt}education   {res}                                                        274.3         -1179.2         -1018.8         -1060.0         -1085.8         -1059.5   {txt}
+            {res}                                                 {ralign 12:{txt:(}1.95{txt:)}}    {ralign 12:{txt:(}-1.31{txt:)}}    {ralign 12:{txt:(}-1.13{txt:)}}    {ralign 12:{txt:(}-1.18{txt:)}}    {ralign 12:{txt:(}-1.22{txt:)}}    {ralign 12:{txt:(}-1.19{txt:)}}   {txt}
+
+{txt}education_~d{res}                                                                        75.13           68.07           70.18           70.12           69.48   {txt}
+            {res}                                                                 {ralign 12:{txt:(}1.63{txt:)}}    {ralign 12:{txt:(}1.48{txt:)}}    {ralign 12:{txt:(}1.53{txt:)}}    {ralign 12:{txt:(}1.54{txt:)}}    {ralign 12:{txt:(}1.52{txt:)}}   {txt}
+
+{txt}black       {res}                                                                                      -1703.8**       -1695.0**       -1476.9*        -1488.7*  {txt}
+            {res}                                                                                 {ralign 12:{txt:(}-2.93{txt:)}}    {ralign 12:{txt:(}-2.91{txt:)}}    {ralign 12:{txt:(}-2.55{txt:)}}    {ralign 12:{txt:(}-2.57{txt:)}}   {txt}
+
+{txt}married     {res}                                                                                                        581.6           145.6           177.5   {txt}
+            {res}                                                                                                 {ralign 12:{txt:(}0.90{txt:)}}    {ralign 12:{txt:(}0.22{txt:)}}    {ralign 12:{txt:(}0.27{txt:)}}   {txt}
+
+{txt}re75        {res}                                                                                                                        0.175***       0.0741   {txt}
+            {res}                                                                                                                 {ralign 12:{txt:(}3.74{txt:)}}    {ralign 12:{txt:(}0.75{txt:)}}   {txt}
+
+{txt}re75_2      {res}                                                                                                                                   0.00000476   {txt}
+            {res}                                                                                                                                 {ralign 12:{txt:(}1.16{txt:)}}   {txt}
+
+{txt}_cons       {res}       5090.0***       4531.2***       3687.6          2297.9          9370.4          9395.3          9986.1         11148.1*        11077.3*  {txt}
+            {res} {ralign 12:{txt:(}16.81{txt:)}}    {ralign 12:{txt:(}4.98{txt:)}}    {ralign 12:{txt:(}1.29{txt:)}}    {ralign 12:{txt:(}0.78{txt:)}}    {ralign 12:{txt:(}1.79{txt:)}}    {ralign 12:{txt:(}1.80{txt:)}}    {ralign 12:{txt:(}1.90{txt:)}}    {ralign 12:{txt:(}2.14{txt:)}}    {ralign 12:{txt:(}2.12{txt:)}}   {txt}
+{txt}{hline 156}
+{txt}N           {res}          722             722             722             722             722             722             722             722             722   {txt}
+{txt}{hline 156}
+{txt}t statistics in parentheses
+{txt}* p<0.05, ** p<0.01, *** p<0.001
+
+{com}. 
+{txt}end of do-file
+
+{com}. save nsw_with_sqrd.dta
+{txt}{p 0 4 2}
+file {bf}
+nsw_with_sqrd.dta{rm}
+saved
+{p_end}
+
+{com}. open psid_control.dta
+{err}command {bf}open{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. use psid_control.dta, clear
+{err}{p 0 4 2}
+file {bf:{err}psid_control.dta}
+not found
+{p_end}
+{txt}{search r(601), local:r(601);}
+
+{com}. use psid_controls.dta, clear
+
+. use nsw_with_sqrd.dta, clear
+
+. help merge
+
+. do "C:\Users\zwy99\AppData\Local\Temp\STD4d3c_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. append using cps_controls.dta psid_controls.dta
+{txt}{p 0 7 2}
+(variable
+{bf:treat} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:age} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:education} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:black} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:hispanic} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:married} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:nodegree} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+
+{com}. eststo clear
+{txt}
+{com}. 
+. gen age_squared = age *age
+{txt}
+{com}. gen education_squared = education * education
+{txt}
+{com}. gen re75_squared = re75 * re75
+{txt}
+{com}. 
+. regress re78 treat
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}    19,204
+{txt}{hline 13}{c +}{hline 34}   F(1, 19202)     = {res}   225.57
+{txt}       Model {c |} {res} 2.6581e+10         1  2.6581e+10   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 2.2628e+12    19,202   117840277   {txt}R-squared       ={res}    0.0116
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0116
+{txt}       Total {c |} {res} 2.2893e+12    19,203   119218338   {txt}Root MSE        =   {res}  10855
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re78{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2}-9534.322{col 26}{space 2} 634.8238{col 37}{space 1}  -15.02{col 46}{space 3}0.000{col 54}{space 4}-10778.63{col 67}{space 3}-8290.012
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 15510.67{col 26}{space 2} 78.94699{col 37}{space 1}  196.47{col 46}{space 3}0.000{col 54}{space 4} 15355.93{col 67}{space 3} 15665.42
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. eststo m1
+{txt}
+{com}. regress re78 treat age age_squared education education_squared black married re75 re75_squared
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}    19,204
+{txt}{hline 13}{c +}{hline 34}   F(9, 19194)     = {res}  2160.43
+{txt}       Model {c |} {res} 1.1521e+12         9  1.2801e+11   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1.1373e+12    19,194  59251408.1   {txt}R-squared       ={res}    0.5032
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.5030
+{txt}       Total {c |} {res} 2.2893e+12    19,203   119218338   {txt}Root MSE        =   {res} 7697.5
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}             re78{col 19}{c |} Coefficient{col 31}  Std. err.{col 43}      t{col 51}   P>|t|{col 59}     [95% con{col 72}f. interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}treat {c |}{col 19}{res}{space 2}-826.4405{col 31}{space 2} 471.0446{col 42}{space 1}   -1.75{col 51}{space 3}0.079{col 59}{space 4}-1749.729{col 72}{space 3} 96.84826
+{txt}{space 14}age {c |}{col 19}{res}{space 2}-124.6597{col 31}{space 2} 41.03233{col 42}{space 1}   -3.04{col 51}{space 3}0.002{col 59}{space 4}-205.0867{col 72}{space 3}-44.23278
+{txt}{space 6}age_squared {c |}{col 19}{res}{space 2} .5750604{col 31}{space 2}  .560879{col 42}{space 1}    1.03{col 51}{space 3}0.305{col 59}{space 4}-.5243115{col 72}{space 3} 1.674432
+{txt}{space 8}education {c |}{col 19}{res}{space 2}-6.349024{col 31}{space 2} 92.56813{col 42}{space 1}   -0.07{col 51}{space 3}0.945{col 59}{space 4}-187.7907{col 72}{space 3} 175.0926
+{txt}education_squared {c |}{col 19}{res}{space 2} 8.828351{col 31}{space 2} 3.955042{col 42}{space 1}    2.23{col 51}{space 3}0.026{col 59}{space 4} 1.076122{col 72}{space 3} 16.58058
+{txt}{space 12}black {c |}{col 19}{res}{space 2}-685.3774{col 31}{space 2} 178.5877{col 42}{space 1}   -3.84{col 51}{space 3}0.000{col 59}{space 4}-1035.425{col 72}{space 3}  -335.33
+{txt}{space 10}married {c |}{col 19}{res}{space 2} 695.2693{col 31}{space 2} 151.0484{col 42}{space 1}    4.60{col 51}{space 3}0.000{col 59}{space 4} 399.2012{col 72}{space 3} 991.3374
+{txt}{space 13}re75 {c |}{col 19}{res}{space 2} .7204339{col 31}{space 2} .0107532{col 42}{space 1}   67.00{col 51}{space 3}0.000{col 59}{space 4} .6993566{col 72}{space 3} .7415112
+{txt}{space 5}re75_squared {c |}{col 19}{res}{space 2} 1.02e-06{col 31}{space 2} 2.47e-07{col 42}{space 1}    4.13{col 51}{space 3}0.000{col 59}{space 4} 5.35e-07{col 72}{space 3} 1.50e-06
+{txt}{space 12}_cons {c |}{col 19}{res}{space 2} 6773.394{col 31}{space 2} 855.5613{col 42}{space 1}    7.92{col 51}{space 3}0.000{col 59}{space 4} 5096.419{col 72}{space 3} 8450.369
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. eststo m2
+{txt}
+{com}. esttab
+{res}
+{txt}{hline 44}
+{txt}                      (1)             (2)   
+{txt}                     re78            re78   
+{txt}{hline 44}
+{txt}treat       {res}      -9534.3***       -826.4   {txt}
+            {res} {ralign 12:{txt:(}-15.02{txt:)}}    {ralign 12:{txt:(}-1.75{txt:)}}   {txt}
+
+{txt}age         {res}                       -124.7** {txt}
+            {res}                 {ralign 12:{txt:(}-3.04{txt:)}}   {txt}
+
+{txt}age_squared {res}                        0.575   {txt}
+            {res}                 {ralign 12:{txt:(}1.03{txt:)}}   {txt}
+
+{txt}education   {res}                       -6.349   {txt}
+            {res}                 {ralign 12:{txt:(}-0.07{txt:)}}   {txt}
+
+{txt}education_~d{res}                        8.828*  {txt}
+            {res}                 {ralign 12:{txt:(}2.23{txt:)}}   {txt}
+
+{txt}black       {res}                       -685.4***{txt}
+            {res}                 {ralign 12:{txt:(}-3.84{txt:)}}   {txt}
+
+{txt}married     {res}                        695.3***{txt}
+            {res}                 {ralign 12:{txt:(}4.60{txt:)}}   {txt}
+
+{txt}re75        {res}                        0.720***{txt}
+            {res}                 {ralign 12:{txt:(}67.00{txt:)}}   {txt}
+
+{txt}re75_squared{res}                   0.00000102***{txt}
+            {res}                 {ralign 12:{txt:(}4.13{txt:)}}   {txt}
+
+{txt}_cons       {res}      15510.7***       6773.4***{txt}
+            {res} {ralign 12:{txt:(}196.47{txt:)}}    {ralign 12:{txt:(}7.92{txt:)}}   {txt}
+{txt}{hline 44}
+{txt}N           {res}        19204           19204   {txt}
+{txt}{hline 44}
+{txt}t statistics in parentheses
+{txt}* p<0.05, ** p<0.01, *** p<0.001
+
+{com}. 
+{txt}end of do-file
+
+{com}. {smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}D:\Dropbox\work files\23春课程\高级计量经济学2\Homework 2 - Matching\log_HW2.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}23 Mar 2023, 13:42:15
+
+{com}. do "D:\Dropbox\work files\23春课程\高级计量经济学2\Homework 2 - Matching\ATE_with_comparison_group.do"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. append using cps_controls.dta psid_controls.dta
+{txt}{p 0 7 2}
+(variable
+{bf:treat} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:age} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:education} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:black} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:hispanic} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:married} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:nodegree} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+
+{com}. 
+. eststo clear
+{txt}
+{com}. 
+. gen age_squared = age *age
+{txt}
+{com}. gen education_squared = education * education
+{txt}
+{com}. gen re75_squared = re75 * re75
+{txt}
+{com}. 
+. regress re78 treat
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}    19,204
+{txt}{hline 13}{c +}{hline 34}   F(1, 19202)     = {res}   225.57
+{txt}       Model {c |} {res} 2.6581e+10         1  2.6581e+10   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 2.2628e+12    19,202   117840277   {txt}R-squared       ={res}    0.0116
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0116
+{txt}       Total {c |} {res} 2.2893e+12    19,203   119218338   {txt}Root MSE        =   {res}  10855
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re78{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2}-9534.322{col 26}{space 2} 634.8238{col 37}{space 1}  -15.02{col 46}{space 3}0.000{col 54}{space 4}-10778.63{col 67}{space 3}-8290.012
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 15510.67{col 26}{space 2} 78.94699{col 37}{space 1}  196.47{col 46}{space 3}0.000{col 54}{space 4} 15355.93{col 67}{space 3} 15665.42
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. eststo m1
+{txt}
+{com}. regress re78 treat age age_squared education education_squared black married re75 re75_squared
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}    19,204
+{txt}{hline 13}{c +}{hline 34}   F(9, 19194)     = {res}  2160.43
+{txt}       Model {c |} {res} 1.1521e+12         9  1.2801e+11   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1.1373e+12    19,194  59251408.1   {txt}R-squared       ={res}    0.5032
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.5030
+{txt}       Total {c |} {res} 2.2893e+12    19,203   119218338   {txt}Root MSE        =   {res} 7697.5
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}             re78{col 19}{c |} Coefficient{col 31}  Std. err.{col 43}      t{col 51}   P>|t|{col 59}     [95% con{col 72}f. interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}treat {c |}{col 19}{res}{space 2}-826.4405{col 31}{space 2} 471.0446{col 42}{space 1}   -1.75{col 51}{space 3}0.079{col 59}{space 4}-1749.729{col 72}{space 3} 96.84826
+{txt}{space 14}age {c |}{col 19}{res}{space 2}-124.6597{col 31}{space 2} 41.03233{col 42}{space 1}   -3.04{col 51}{space 3}0.002{col 59}{space 4}-205.0867{col 72}{space 3}-44.23278
+{txt}{space 6}age_squared {c |}{col 19}{res}{space 2} .5750604{col 31}{space 2}  .560879{col 42}{space 1}    1.03{col 51}{space 3}0.305{col 59}{space 4}-.5243115{col 72}{space 3} 1.674432
+{txt}{space 8}education {c |}{col 19}{res}{space 2}-6.349024{col 31}{space 2} 92.56813{col 42}{space 1}   -0.07{col 51}{space 3}0.945{col 59}{space 4}-187.7907{col 72}{space 3} 175.0926
+{txt}education_squared {c |}{col 19}{res}{space 2} 8.828351{col 31}{space 2} 3.955042{col 42}{space 1}    2.23{col 51}{space 3}0.026{col 59}{space 4} 1.076122{col 72}{space 3} 16.58058
+{txt}{space 12}black {c |}{col 19}{res}{space 2}-685.3774{col 31}{space 2} 178.5877{col 42}{space 1}   -3.84{col 51}{space 3}0.000{col 59}{space 4}-1035.425{col 72}{space 3}  -335.33
+{txt}{space 10}married {c |}{col 19}{res}{space 2} 695.2693{col 31}{space 2} 151.0484{col 42}{space 1}    4.60{col 51}{space 3}0.000{col 59}{space 4} 399.2012{col 72}{space 3} 991.3374
+{txt}{space 13}re75 {c |}{col 19}{res}{space 2} .7204339{col 31}{space 2} .0107532{col 42}{space 1}   67.00{col 51}{space 3}0.000{col 59}{space 4} .6993566{col 72}{space 3} .7415112
+{txt}{space 5}re75_squared {c |}{col 19}{res}{space 2} 1.02e-06{col 31}{space 2} 2.47e-07{col 42}{space 1}    4.13{col 51}{space 3}0.000{col 59}{space 4} 5.35e-07{col 72}{space 3} 1.50e-06
+{txt}{space 12}_cons {c |}{col 19}{res}{space 2} 6773.394{col 31}{space 2} 855.5613{col 42}{space 1}    7.92{col 51}{space 3}0.000{col 59}{space 4} 5096.419{col 72}{space 3} 8450.369
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. eststo m2
+{txt}
+{com}. esttab
+{res}
+{txt}{hline 44}
+{txt}                      (1)             (2)   
+{txt}                     re78            re78   
+{txt}{hline 44}
+{txt}treat       {res}      -9534.3***       -826.4   {txt}
+            {res} {ralign 12:{txt:(}-15.02{txt:)}}    {ralign 12:{txt:(}-1.75{txt:)}}   {txt}
+
+{txt}age         {res}                       -124.7** {txt}
+            {res}                 {ralign 12:{txt:(}-3.04{txt:)}}   {txt}
+
+{txt}age_squared {res}                        0.575   {txt}
+            {res}                 {ralign 12:{txt:(}1.03{txt:)}}   {txt}
+
+{txt}education   {res}                       -6.349   {txt}
+            {res}                 {ralign 12:{txt:(}-0.07{txt:)}}   {txt}
+
+{txt}education_~d{res}                        8.828*  {txt}
+            {res}                 {ralign 12:{txt:(}2.23{txt:)}}   {txt}
+
+{txt}black       {res}                       -685.4***{txt}
+            {res}                 {ralign 12:{txt:(}-3.84{txt:)}}   {txt}
+
+{txt}married     {res}                        695.3***{txt}
+            {res}                 {ralign 12:{txt:(}4.60{txt:)}}   {txt}
+
+{txt}re75        {res}                        0.720***{txt}
+            {res}                 {ralign 12:{txt:(}67.00{txt:)}}   {txt}
+
+{txt}re75_squared{res}                   0.00000102***{txt}
+            {res}                 {ralign 12:{txt:(}4.13{txt:)}}   {txt}
+
+{txt}_cons       {res}      15510.7***       6773.4***{txt}
+            {res} {ralign 12:{txt:(}196.47{txt:)}}    {ralign 12:{txt:(}7.92{txt:)}}   {txt}
+{txt}{hline 44}
+{txt}N           {res}        19204           19204   {txt}
+{txt}{hline 44}
+{txt}t statistics in parentheses
+{txt}* p<0.05, ** p<0.01, *** p<0.001
+
+{com}. 
+{txt}end of do-file
+
+{com}. help psmatch2
+
+. .ssc install psmatch2
+{err}invalid syntax
+{txt}{search r(198), local:r(198);}
+
+{com}. . ssc install psmatch2
+{txt}checking {hilite:psmatch2} consistency and verifying not already installed...
+installing into C:\Users\zwy99\ado\plus\...
+installation complete.
+
+{com}. help psmatch2
+
+. do "C:\Users\zwy99\AppData\Local\Temp\STD1304_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. drop if treat == 0
+{txt}(425 observations deleted)
+
+{com}. append using psid_controls.dta
+{txt}{p 0 7 2}
+(variable
+{bf:treat} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:age} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:education} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:black} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:hispanic} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:married} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:nodegree} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. psmatch2 re78 treat re75 age education black married
+{res}
+{txt}Probit regression{col 57}{lalign 13:Number of obs}{col 70} = {res}{ralign 6:2,787}
+{txt}{col 57}{lalign 13:LR chi2({res:6})}{col 70} = {res}{ralign 6:479.81}
+{txt}{col 57}{lalign 13:Prob > chi2}{col 70} = {res}{ralign 6:0.0000}
+{txt}Log likelihood = {res:-819.11805}{col 57}{lalign 13:Pseudo R2}{col 70} = {res}{ralign 6:0.2265}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re78{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2}-.1446497{col 26}{space 2} .1218723{col 37}{space 1}   -1.19{col 46}{space 3}0.235{col 54}{space 4} -.383515{col 67}{space 3} .0942155
+{txt}{space 8}re75 {c |}{col 14}{res}{space 2} .0000639{col 26}{space 2} 3.69e-06{col 37}{space 1}   17.30{col 46}{space 3}0.000{col 54}{space 4} .0000567{col 67}{space 3} .0000711
+{txt}{space 9}age {c |}{col 14}{res}{space 2} -.032012{col 26}{space 2} .0036087{col 37}{space 1}   -8.87{col 46}{space 3}0.000{col 54}{space 4}-.0390849{col 67}{space 3} -.024939
+{txt}{space 3}education {c |}{col 14}{res}{space 2}-.0371317{col 26}{space 2} .0130017{col 37}{space 1}   -2.86{col 46}{space 3}0.004{col 54}{space 4}-.0626146{col 67}{space 3}-.0116488
+{txt}{space 7}black {c |}{col 14}{res}{space 2} .1866602{col 26}{space 2} .0855733{col 37}{space 1}    2.18{col 46}{space 3}0.029{col 54}{space 4} .0189396{col 67}{space 3} .3543808
+{txt}{space 5}married {c |}{col 14}{res}{space 2} .0947338{col 26}{space 2} .0997668{col 37}{space 1}    0.95{col 46}{space 3}0.342{col 54}{space 4}-.1008055{col 67}{space 3} .2902732
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.746135{col 26}{space 2} .2409431{col 37}{space 1}    7.25{col 46}{space 3}0.000{col 54}{space 4} 1.273896{col 67}{space 3} 2.218375
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 0 failures and 2 successes completely determined.{p_end}
+{res}
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD1304_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. drop if treat == 0
+{txt}(425 observations deleted)
+
+{com}. append using psid_controls.dta
+{txt}{p 0 7 2}
+(variable
+{bf:treat} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:age} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:education} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:black} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:hispanic} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:married} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:nodegree} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. psmatch2 treat age re75 education black married
+{res}
+{txt}Probit regression{col 56}{lalign 13:Number of obs}{col 69} = {res}{ralign 7:2,787}
+{txt}{col 56}{lalign 13:LR chi2({res:5})}{col 69} = {res}{ralign 7:1115.06}
+{txt}{col 56}{lalign 13:Prob > chi2}{col 69} = {res}{ralign 7:0.0000}
+{txt}Log likelihood = {res:-388.03265}{col 56}{lalign 13:Pseudo R2}{col 69} = {res}{ralign 7:0.5896}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       treat{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}age {c |}{col 14}{res}{space 2}-.0559223{col 26}{space 2} .0066473{col 37}{space 1}   -8.41{col 46}{space 3}0.000{col 54}{space 4}-.0689507{col 67}{space 3}-.0428939
+{txt}{space 8}re75 {c |}{col 14}{res}{space 2}-.0000977{col 26}{space 2} 8.45e-06{col 37}{space 1}  -11.56{col 46}{space 3}0.000{col 54}{space 4}-.0001142{col 67}{space 3}-.0000811
+{txt}{space 3}education {c |}{col 14}{res}{space 2}-.0986307{col 26}{space 2} .0223405{col 37}{space 1}   -4.41{col 46}{space 3}0.000{col 54}{space 4}-.1424173{col 67}{space 3}-.0548441
+{txt}{space 7}black {c |}{col 14}{res}{space 2} .8183886{col 26}{space 2} .1093518{col 37}{space 1}    7.48{col 46}{space 3}0.000{col 54}{space 4} .6040631{col 67}{space 3} 1.032714
+{txt}{space 5}married {c |}{col 14}{res}{space 2}-1.169958{col 26}{space 2} .1061392{col 37}{space 1}  -11.02{col 46}{space 3}0.000{col 54}{space 4}-1.377987{col 67}{space 3}-.9619285
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 2.531981{col 26}{space 2} .3733267{col 37}{space 1}    6.78{col 46}{space 3}0.000{col 54}{space 4} 1.800274{col 67}{space 3} 3.263688
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 180 failures and 0 successes completely determined.{p_end}
+{res}
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD1304_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. drop if treat == 0
+{txt}(425 observations deleted)
+
+{com}. append using psid_controls.dta
+{txt}{p 0 7 2}
+(variable
+{bf:treat} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:age} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:education} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:black} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:hispanic} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:married} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:nodegree} was {bf:byte}, now {bf:float} to accommodate using data's values)
+{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. psmatch2 treat age re75 education black married, out(re78)
+{res}
+{txt}Probit regression{col 56}{lalign 13:Number of obs}{col 69} = {res}{ralign 7:2,787}
+{txt}{col 56}{lalign 13:LR chi2({res:5})}{col 69} = {res}{ralign 7:1115.06}
+{txt}{col 56}{lalign 13:Prob > chi2}{col 69} = {res}{ralign 7:0.0000}
+{txt}Log likelihood = {res:-388.03265}{col 56}{lalign 13:Pseudo R2}{col 69} = {res}{ralign 7:0.5896}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       treat{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}age {c |}{col 14}{res}{space 2}-.0559223{col 26}{space 2} .0066473{col 37}{space 1}   -8.41{col 46}{space 3}0.000{col 54}{space 4}-.0689507{col 67}{space 3}-.0428939
+{txt}{space 8}re75 {c |}{col 14}{res}{space 2}-.0000977{col 26}{space 2} 8.45e-06{col 37}{space 1}  -11.56{col 46}{space 3}0.000{col 54}{space 4}-.0001142{col 67}{space 3}-.0000811
+{txt}{space 3}education {c |}{col 14}{res}{space 2}-.0986307{col 26}{space 2} .0223405{col 37}{space 1}   -4.41{col 46}{space 3}0.000{col 54}{space 4}-.1424173{col 67}{space 3}-.0548441
+{txt}{space 7}black {c |}{col 14}{res}{space 2} .8183886{col 26}{space 2} .1093518{col 37}{space 1}    7.48{col 46}{space 3}0.000{col 54}{space 4} .6040631{col 67}{space 3} 1.032714
+{txt}{space 5}married {c |}{col 14}{res}{space 2}-1.169958{col 26}{space 2} .1061392{col 37}{space 1}  -11.02{col 46}{space 3}0.000{col 54}{space 4}-1.377987{col 67}{space 3}-.9619285
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 2.531981{col 26}{space 2} .3733267{col 37}{space 1}    6.78{col 46}{space 3}0.000{col 54}{space 4} 1.800274{col 67}{space 3} 3.263688
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 180 failures and 0 successes completely determined.{p_end}
+{res}{txt}{hline 28}{c TT}{hline 59}
+        Variable     Sample {c |}    Treated     Controls   Difference         S.E.   T-stat
+{hline 28}{c +}{hline 59}
+            re78  Unmatched {c |}{res} 5976.35202   21553.9209  -15577.5689   913.328457   -17.06
+{txt}{col 17}        ATT {c |}{res} 5976.35202   7055.83591  -1079.48389   1848.82541    -0.58
+{txt}{hline 28}{c +}{hline 59}
+Note: S.E. does not take into account that the propensity score is estimated.
+
+           {c |} psmatch2:
+ psmatch2: {c |}   Common
+ Treatment {c |}  support
+assignment {c |} On suppor {c |}     Total
+{hline 11}{c +}{hline 11}{c +}{hline 10}
+ Untreated {c |}{res}     2,490 {txt}{c |}{res}     2,490 
+{txt}   Treated {c |}{res}       297 {txt}{c |}{res}       297 
+{txt}{hline 11}{c +}{hline 11}{c +}{hline 10}
+     Total {c |}{res}     2,787 {txt}{c |}{res}     2,787 
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD1304_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. eststo clear
+{txt}
+{com}. 
+. regress re78 treat
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     3.52
+{txt}       Model {c |} {res}  137332501         1   137332501   {txt}Prob > F        ={res}    0.0609
+{txt}    Residual {c |} {res} 2.8053e+10       720  38962866.3   {txt}R-squared       ={res}    0.0049
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0035
+{txt}       Total {c |} {res} 2.8191e+10       721  39099301.3   {txt}Root MSE        =   {res}   6242
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re78{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} 886.3037{col 26}{space 2} 472.0863{col 37}{space 1}    1.88{col 46}{space 3}0.061{col 54}{space 4}-40.52635{col 67}{space 3} 1813.134
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 5090.048{col 26}{space 2} 302.7826{col 37}{space 1}   16.81{col 46}{space 3}0.000{col 54}{space 4} 4495.606{col 67}{space 3} 5684.491
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. eststo m1
+{txt}
+{com}. regress re78 treat age age_squared education education_squared black married re75 re75_2
+{err}variable {bf}age_squared{sf} not found
+{txt}{search r(111), local:r(111);}
+
+end of do-file
+
+{search r(111), local:r(111);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD1304_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. eststo clear
+{txt}
+{com}. 
+. gen age_squared = age *age 
+{txt}
+{com}. gen education_squared = education * education 
+{txt}
+{com}. gen re75_squared = re75 * re75
+{txt}
+{com}. 
+. regress re78 treat
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     3.52
+{txt}       Model {c |} {res}  137332501         1   137332501   {txt}Prob > F        ={res}    0.0609
+{txt}    Residual {c |} {res} 2.8053e+10       720  38962866.3   {txt}R-squared       ={res}    0.0049
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0035
+{txt}       Total {c |} {res} 2.8191e+10       721  39099301.3   {txt}Root MSE        =   {res}   6242
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re78{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} 886.3037{col 26}{space 2} 472.0863{col 37}{space 1}    1.88{col 46}{space 3}0.061{col 54}{space 4}-40.52635{col 67}{space 3} 1813.134
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 5090.048{col 26}{space 2} 302.7826{col 37}{space 1}   16.81{col 46}{space 3}0.000{col 54}{space 4} 4495.606{col 67}{space 3} 5684.491
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. eststo m1
+{txt}
+{com}. regress re78 treat age age_squared education education_squared black married re75 re75_2
+{err}variable {bf}re75_2{sf} not found
+{txt}{search r(111), local:r(111);}
+
+end of do-file
+
+{search r(111), local:r(111);}
+
+{com}. do "C:\Users\zwy99\AppData\Local\Temp\STD1304_000000.tmp"
+{txt}
+{com}. use nsw.dta, clear
+{txt}
+{com}. eststo clear
+{txt}
+{com}. 
+. gen age_squared = age *age 
+{txt}
+{com}. gen education_squared = education * education 
+{txt}
+{com}. gen re75_squared = re75 * re75
+{txt}
+{com}. 
+. regress re78 treat
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(1, 720)       = {res}     3.52
+{txt}       Model {c |} {res}  137332501         1   137332501   {txt}Prob > F        ={res}    0.0609
+{txt}    Residual {c |} {res} 2.8053e+10       720  38962866.3   {txt}R-squared       ={res}    0.0049
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0035
+{txt}       Total {c |} {res} 2.8191e+10       721  39099301.3   {txt}Root MSE        =   {res}   6242
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        re78{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}treat {c |}{col 14}{res}{space 2} 886.3037{col 26}{space 2} 472.0863{col 37}{space 1}    1.88{col 46}{space 3}0.061{col 54}{space 4}-40.52635{col 67}{space 3} 1813.134
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 5090.048{col 26}{space 2} 302.7826{col 37}{space 1}   16.81{col 46}{space 3}0.000{col 54}{space 4} 4495.606{col 67}{space 3} 5684.491
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. eststo m1
+{txt}
+{com}. regress re78 treat age age_squared education education_squared black married re75 re75_squared
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       722
+{txt}{hline 13}{c +}{hline 34}   F(9, 712)       = {res}     3.96
+{txt}       Model {c |} {res} 1.3454e+09         9   149490881   {txt}Prob > F        ={res}    0.0001
+{txt}    Residual {c |} {res} 2.6845e+10       712  37703902.1   {txt}R-squared       ={res}    0.0477
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0357
+{txt}       Total {c |} {res} 2.8191e+10       721  39099301.3   {txt}Root MSE        =   {res} 6140.4
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}             re78{col 19}{c |} Coefficient{col 31}  Std. err.{col 43}      t{col 51}   P>|t|{col 59}     [95% con{col 72}f. interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}treat {c |}{col 19}{res}{space 2} 779.9836{col 31}{space 2} 467.1592{col 42}{space 1}    1.67{col 51}{space 3}0.095{col 59}{space 4}-137.1908{col 72}{space 3} 1697.158
+{txt}{space 14}age {c |}{col 19}{res}{space 2}-139.4936{col 31}{space 2} 212.8251{col 42}{space 1}   -0.66{col 51}{space 3}0.512{col 59}{space 4}-557.3334{col 72}{space 3} 278.3462
+{txt}{space 6}age_squared {c |}{col 19}{res}{space 2} 2.481313{col 31}{space 2} 3.569618{col 42}{space 1}    0.70{col 51}{space 3}0.487{col 59}{space 4}-4.526923{col 72}{space 3} 9.489549
+{txt}{space 8}education {c |}{col 19}{res}{space 2}-1059.538{col 31}{space 2} 893.0895{col 42}{space 1}   -1.19{col 51}{space 3}0.236{col 59}{space 4}-2812.942{col 72}{space 3} 693.8662
+{txt}education_squared {c |}{col 19}{res}{space 2} 69.48109{col 31}{space 2} 45.56591{col 42}{space 1}    1.52{col 51}{space 3}0.128{col 59}{space 4}-19.97853{col 72}{space 3} 158.9407
+{txt}{space 12}black {c |}{col 19}{res}{space 2}-1488.665{col 31}{space 2} 579.7418{col 42}{space 1}   -2.57{col 51}{space 3}0.010{col 59}{space 4}-2626.873{col 72}{space 3}-350.4569
+{txt}{space 10}married {c |}{col 19}{res}{space 2} 177.4902{col 31}{space 2} 653.7573{col 42}{space 1}    0.27{col 51}{space 3}0.786{col 59}{space 4}-1106.032{col 72}{space 3} 1461.013
+{txt}{space 13}re75 {c |}{col 19}{res}{space 2} .0741242{col 31}{space 2} .0989416{col 42}{space 1}    0.75{col 51}{space 3}0.454{col 59}{space 4}-.1201279{col 72}{space 3} .2683763
+{txt}{space 5}re75_squared {c |}{col 19}{res}{space 2} 4.76e-06{col 31}{space 2} 4.09e-06{col 42}{space 1}    1.16{col 51}{space 3}0.245{col 59}{space 4}-3.28e-06{col 72}{space 3} .0000128
+{txt}{space 12}_cons {c |}{col 19}{res}{space 2} 11077.29{col 31}{space 2} 5219.503{col 42}{space 1}    2.12{col 51}{space 3}0.034{col 59}{space 4} 829.8373{col 72}{space 3} 21324.75
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. eststo m2
+{txt}
+{com}. esttab
+{res}
+{txt}{hline 44}
+{txt}                      (1)             (2)   
+{txt}                     re78            re78   
+{txt}{hline 44}
+{txt}treat       {res}        886.3           780.0   {txt}
+            {res} {ralign 12:{txt:(}1.88{txt:)}}    {ralign 12:{txt:(}1.67{txt:)}}   {txt}
+
+{txt}age         {res}                       -139.5   {txt}
+            {res}                 {ralign 12:{txt:(}-0.66{txt:)}}   {txt}
+
+{txt}age_squared {res}                        2.481   {txt}
+            {res}                 {ralign 12:{txt:(}0.70{txt:)}}   {txt}
+
+{txt}education   {res}                      -1059.5   {txt}
+            {res}                 {ralign 12:{txt:(}-1.19{txt:)}}   {txt}
+
+{txt}education_~d{res}                        69.48   {txt}
+            {res}                 {ralign 12:{txt:(}1.52{txt:)}}   {txt}
+
+{txt}black       {res}                      -1488.7*  {txt}
+            {res}                 {ralign 12:{txt:(}-2.57{txt:)}}   {txt}
+
+{txt}married     {res}                        177.5   {txt}
+            {res}                 {ralign 12:{txt:(}0.27{txt:)}}   {txt}
+
+{txt}re75        {res}                       0.0741   {txt}
+            {res}                 {ralign 12:{txt:(}0.75{txt:)}}   {txt}
+
+{txt}re75_squared{res}                   0.00000476   {txt}
+            {res}                 {ralign 12:{txt:(}1.16{txt:)}}   {txt}
+
+{txt}_cons       {res}       5090.0***      11077.3*  {txt}
+            {res} {ralign 12:{txt:(}16.81{txt:)}}    {ralign 12:{txt:(}2.12{txt:)}}   {txt}
+{txt}{hline 44}
+{txt}N           {res}          722             722   {txt}
+{txt}{hline 44}
+{txt}t statistics in parentheses
+{txt}* p<0.05, ** p<0.01, *** p<0.001
+
+{com}. 
+{txt}end of do-file
+
+{com}. {smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/zwy/Library/CloudStorage/Dropbox/work files/23春课程/高级计量经济学2/Homework 2 - Matching/log_HW2.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}24 Mar 2023, 08:40:55
+
+{com}. 
